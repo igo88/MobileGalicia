@@ -6,7 +6,15 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "events": "^1.1.0",
+    "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "nock": "^8.0.0",
+    "object-assign": "^4.0.1",
     "react": "^15.0.2",
-    "react-native": "^0.26.0"
+    "react": "^0.14.5",
+    "react-native": "^0.23.1",
+    "sync-queue": "0.0.2",
+    "underscore": "^1.8.3"
   }
 }
