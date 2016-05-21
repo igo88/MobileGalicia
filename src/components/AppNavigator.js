@@ -11,6 +11,8 @@ var ReadQR = require('./ReadQR');
 var BuyConfirm = require('./BuyConfirm');
 var ShowQR = require('./ShowQR');
 var GenerateQR = require('./GenerateQR');
+var Signup = require('./Signup');
+var Signup2 = require('./Signup2');
 
 var {
   Navigator,
@@ -114,8 +116,14 @@ _onHardwareBack: function() {
 var renderComponent = function(route, navigator) {
   console.log(route.id);
   switch (route.id) {
+    case RouteConstants.SIGNUP:
+     return(<Signup/>);
+    break;
+    case RouteConstants.SIGNUP2:
+     return(<Signup2 mode={route.payload}/>);
+    break;
     case RouteConstants.HOME:
-      return (<Home/>);
+      return (<Home mode={route.payload}/>);
     break;
     case RouteConstants.BUY:
       return (<Buy/>);
