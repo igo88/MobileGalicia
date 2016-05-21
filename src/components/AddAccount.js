@@ -10,7 +10,7 @@ var AddAccount = React.createClass({
   render: function() {
     return (
       <View style={styles.layout}>
-        <Text>Hola</Text>
+        <Text>Add Account</Text>
       </View>
     );
   }
@@ -18,7 +18,7 @@ var AddAccount = React.createClass({
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ff0000',
+    backgroundColor: '#ffff00',
     flex: 1,
   },
 });

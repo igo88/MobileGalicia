@@ -5,7 +5,7 @@ var EventEmitter = require('events').EventEmitter;
 var AppConstants = require('../constants/AppConstants');
 
 var CHANGE_EVENT = 'change';
-var _isFirstTime = true;
+var _hasSeenAddAccount = false;
 
 var AppStore = assign({}, EventEmitter.prototype, {
   emitChange: function() {
@@ -17,17 +17,14 @@ var AppStore = assign({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
-  getFirstTime: function(){
-    return _isFirstTime;
+  getHasSeenAddAccount: function(){
+    return _hasSeenAddAccount;
   },
 });
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
-    case AppConstants.APP_START:
-    _isFirstTime = false;
-    AppStore.emitChange();
-    break;
+    
   }
 });
 

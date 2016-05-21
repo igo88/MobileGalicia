@@ -3,6 +3,7 @@
 var React = require('react-native');
 var AppNavigator = require('./src/components/AppNavigator');
 var RouteConstants = require('./src/constants/RouteConstants');
+var AppActions = require('./src/actions/AppActions');
 
 var {
   AppRegistry,
@@ -12,13 +13,17 @@ var {
 } = React;
 
 var MobileGalicia = React.createClass({
+  componentDidMount:function(){
+    AppActions.appStart();
+  },
+
   render: function() {
-    return (
-      <View style={styles.margin}>
-        <AppNavigator initialRoute={RouteConstants.HOME}></AppNavigator>
-      </View>
-    );
-  }
+      return (
+        <View style={styles.margin}>
+          <AppNavigator initialRoute={RouteConstants.HOME}></AppNavigator>
+        </View>
+      );
+    }
 });
 
 var styles = StyleSheet.create({

@@ -5,6 +5,8 @@ var NavigationStore = require('../stores/NavigationStore');
 var React = require('react-native');
 
 var Home = require('./Home');
+var Buy = require('./Buy');
+var Pay = require('./Pay');
 
 
 var {
@@ -110,6 +112,12 @@ var renderComponent = function(route, navigator) {
   switch (route.id) {
     case RouteConstants.HOME:
       return (<Home/>);
+    break;
+    case RouteConstants.BUY:
+      return (<Buy/>);
+    break;
+    case RouteConstants.PAY:
+      return (<Pay/>);
     break;
     default:
       return (<Home />);

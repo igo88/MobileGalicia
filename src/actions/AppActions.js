@@ -1,5 +1,5 @@
 var Dispatcher = require('../dispatcher/Dispatcher');
-var NavigationConstants = require('../constants/AppConstants');
+var AppConstants = require('../constants/AppConstants');
 
 var AppActions = {
   appStart: function() {
