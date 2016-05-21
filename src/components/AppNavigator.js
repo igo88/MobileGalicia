@@ -120,11 +120,11 @@ var renderComponent = function(route, navigator) {
     case RouteConstants.BUY:
       return (<Buy/>);
     break;
-    case RouteConstants.BUY_CONFIRM:
-      return (<BuyConfirm name={route.payload.name}/>);
+    case RouteConstants.READ_QR:
+      return (<ReadQR/>);
     break;
     case RouteConstants.BUY_CONFIRM:
-      return (<BuyConfirm name={route.payload.name}/>);
+      return (<BuyConfirm result={route.payload.result}/>);
     break;
     case RouteConstants.SELL:
       return (<Sell/>);

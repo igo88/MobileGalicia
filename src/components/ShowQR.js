@@ -13,7 +13,16 @@ var {
 var ShowQR = React.createClass({
 
 componentDidMount:function(){
-
+  _socket = io('http://172.17.69.83:3000',{jsonp: false, transports: ['websocket']});
+  _socket.on('confirm', function(data){
+    Alert.alert(
+    'Felicitaciones',
+    'Se acredito el pago.',
+    [
+      {text: 'OK', onPress: () => console.log('OK Pressed')}
+    ]
+  );
+  });
 },
 render: function() {
     return (

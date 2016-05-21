@@ -16,7 +16,7 @@ componentDidMount:function(){
 },
 
 _onSucess: function(result) {
-  NavigationActions.replace({route: RouteConstants.BUY_CONFIRM, payload: {name:result}});
+  NavigationActions.replace({route: RouteConstants.BUY_CONFIRM, payload: {result:result}});
 },
 
 render: function() {
