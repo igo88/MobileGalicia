@@ -7,7 +7,10 @@ var React = require('react-native');
 var Home = require('./Home');
 var Buy = require('./Buy');
 var Sell = require('./Sell');
-
+var ReadQR = require('./ReadQR');
+var BuyConfirm = require('./BuyConfirm');
+var ShowQR = require('./ShowQR');
+var GenerateQR = require('./GenerateQR');
 
 var {
   Navigator,
@@ -109,6 +112,7 @@ _onHardwareBack: function() {
 });
 
 var renderComponent = function(route, navigator) {
+  console.log(route.id);
   switch (route.id) {
     case RouteConstants.HOME:
       return (<Home/>);
@@ -116,8 +120,20 @@ var renderComponent = function(route, navigator) {
     case RouteConstants.BUY:
       return (<Buy/>);
     break;
+    case RouteConstants.BUY_CONFIRM:
+      return (<BuyConfirm name={route.payload.name}/>);
+    break;
+    case RouteConstants.BUY_CONFIRM:
+      return (<BuyConfirm name={route.payload.name}/>);
+    break;
     case RouteConstants.SELL:
       return (<Sell/>);
+    break;
+    case RouteConstants.SELL_GENERATE:
+      return (<GenerateQR/>);
+    break;
+    case RouteConstants.SELL_SHOW_QR:
+      return (<ShowQR name= {route.payload.name} price = {route.payload.price}/>);
     break;
     default:
       return (<Home />);

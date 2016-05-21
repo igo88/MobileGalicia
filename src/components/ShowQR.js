@@ -2,33 +2,27 @@ var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var AppStore = require('../stores/AppStore');
 var NavigationActions = require('../actions/NavigationActions');
+var QRCode = require('react-native-qrcode');
 
 var {
-  Alert,
   Text,
   View,
-  StyleSheet,
-  TouchableOpacity
+  StyleSheet
   } = React;
 
-var Buy = React.createClass({
+var ShowQR = React.createClass({
+
 componentDidMount:function(){
 
 },
-_onPressButtonRead:function()
-{
-    NavigationActions.navigate({route: RouteConstants.READ_QR});
-},
-
-
-
 render: function() {
     return (
       <View style={styles.layout}>
-        <Text>Buy</Text>
-        <TouchableOpacity onPress={this._onPressButtonRead}>
-          <Text>Leer</Text>
-        </TouchableOpacity>
+      <QRCode
+            value={this.props.text + '|' + this.props.price}
+          size={200}
+          bgColor='black'
+          fgColor='white'/>
       </View>
     );
   }
@@ -41,4 +35,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = Buy;
+module.exports = ShowQR;
