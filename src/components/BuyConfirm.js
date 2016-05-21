@@ -2,14 +2,11 @@ var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var AppStore = require('../stores/AppStore');
 var NavigationActions = require('../actions/NavigationActions');
-<<<<<<< HEAD
-=======
+
 var Button = require('react-native-button');
 
 window.navigator.userAgent = "react-native";
 var io = require("../../node_modules/socket.io/node_modules/socket.io-client/socket.io");
-
->>>>>>> 898d1a301c304ad42d4dbf4d5700549c7777103c
 
 var {
   Alert,
@@ -19,13 +16,6 @@ var {
   TouchableOpacity
   } = React;
 
-<<<<<<< HEAD
-var BuyConfirm = React.createClass({
-render: function() {
-    return (
-      <View style={styles.layout}>
-      <Text>Confirmas la compra de: {this.props.name}</Text>
-=======
 var _socket;
 
 var BuyConfirm = React.createClass({
@@ -58,7 +48,6 @@ render: function() {
           onPress={this._onPressButton}>
             Confirmar Pago!
         </Button>
->>>>>>> 898d1a301c304ad42d4dbf4d5700549c7777103c
       </View>
     );
   }

@@ -16,11 +16,7 @@ componentDidMount:function(){
 },
 
 _onSucess: function(result) {
-<<<<<<< HEAD
-  NavigationActions.replace({route: RouteConstants.BUY_CONFIRM, payload: {name:result}});
-=======
   NavigationActions.replace({route: RouteConstants.BUY_CONFIRM, payload: {result:result}});
->>>>>>> 898d1a301c304ad42d4dbf4d5700549c7777103c
 },
 
 render: function() {

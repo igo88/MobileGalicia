@@ -13,9 +13,6 @@ var {
 var ShowQR = React.createClass({
 
 componentDidMount:function(){
-<<<<<<< HEAD
-
-=======
   _socket = io('http://172.17.69.83:3000',{jsonp: false, transports: ['websocket']});
   _socket.on('confirm', function(data){
     Alert.alert(
@@ -26,7 +23,6 @@ componentDidMount:function(){
     ]
   );
   });
->>>>>>> 898d1a301c304ad42d4dbf4d5700549c7777103c
 },
 render: function() {
     return (
