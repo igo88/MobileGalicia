@@ -11,24 +11,11 @@ var {
   TouchableOpacity
   } = React;
 
-var Buy = React.createClass({
-componentDidMount:function(){
-
-},
-_onPressButtonRead:function()
-{
-    NavigationActions.navigate({route: RouteConstants.READ_QR});
-},
-
-
-
+var BuyConfirm = React.createClass({
 render: function() {
     return (
       <View style={styles.layout}>
-        <Text>Buy</Text>
-        <TouchableOpacity onPress={this._onPressButtonRead}>
-          <Text>Leer</Text>
-        </TouchableOpacity>
+      <Text>Confirmas la compra de: {this.props.name}</Text>
       </View>
     );
   }
@@ -41,4 +28,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = Buy;
+module.exports = BuyConfirm;

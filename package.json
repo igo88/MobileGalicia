@@ -13,6 +13,7 @@
     "object-assign": "^4.0.1",
     "react": "^0.14.5",
     "react-native": "^0.23.1",
+    "react-native-button": "^1.6.0",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
     "react-native-qrcode": "^0.2.0",
     "sync-queue": "0.0.2",

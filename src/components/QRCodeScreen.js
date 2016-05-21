@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var NavigationActions = require('../actions/NavigationActions');
 
 var {
   StyleSheet,
@@ -31,7 +32,7 @@ var QRCodeScreen = React.createClass({
   _onPressCancel: function() {
     var $this = this;
     requestAnimationFrame(function() {
-      $this.props.navigator.pop();
+      NavigationActions.back();
       if ($this.props.onCancel) {
         $this.props.onCancel();
       }
@@ -46,7 +47,7 @@ var QRCodeScreen = React.createClass({
 
       setTimeout(function() {
         VibrationIOS.vibrate();
-        $this.props.navigator.pop();
+        NavigationActions.back();
         $this.props.onSucess(result.data);
       }, 1000);
     }
