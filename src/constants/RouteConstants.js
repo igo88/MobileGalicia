@@ -2,6 +2,6 @@ var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
   HOME: null,
-  PAY:null,
+  SELL:null,
   BUY:null
 });

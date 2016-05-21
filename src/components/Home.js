@@ -28,7 +28,7 @@ render: function() {
           <Text>Comprar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={this._onPressButtonPay}>
-          <Text>Pagar</Text>
+          <Text>Vender</Text>
         </TouchableOpacity>
       </View>
     );
@@ -38,7 +38,7 @@ render: function() {
     NavigationActions.navigate({route: RouteConstants.BUY});
   },
   _onPressButtonPay:function(){
-    NavigationActions.navigate({route: RouteConstants.PAY});
+    NavigationActions.navigate({route: RouteConstants.SELL});
   },
 });
 

@@ -9,7 +9,7 @@ var {
   StyleSheet
   } = React;
 
-var Pay = React.createClass({
+var Sell = React.createClass({
 
 componentDidMount:function(){
 
@@ -30,4 +30,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = Pay;
+module.exports = Sell;
