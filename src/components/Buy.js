@@ -2,6 +2,7 @@ var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var AppStore = require('../stores/AppStore');
 var NavigationActions = require('../actions/NavigationActions');
+var UserStore = require('../stores/UserStore');
 
 var {
   Text,
@@ -18,9 +19,21 @@ var {
 
 var deviceWidth = Dimensions.get('window').width;
 var Buy = React.createClass({
-
+getInitialState:function(){
+  return({
+    transactions: UserStore.getPurchases()
+  });
+},
 componentDidMount:function(){
-
+  UserStore.addChangeListener(this._onUserStoreChange);
+},
+componenteWillUnmount:function(){
+  UserStore.removeChangeListener(this._onUserStoreChange);
+},
+_onUserStoreChange:function(){
+  this.setState({
+    transactions: UserStore.getPurchases()
+  });
 },
 _onPressButtonRead:function()
 {
