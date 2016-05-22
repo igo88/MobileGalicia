@@ -13,7 +13,8 @@ var {
   View,
   Image,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  TouchableOpacity,
   } = React;
 
 var deviceWidth = Dimensions.get('window').width;

@@ -112,7 +112,6 @@ var styles = StyleSheet.create({
   },
   marginBox:{
     width: 300,
-    marginLeft: 25,
     marginTop: 30,
   },
   inputField:{
