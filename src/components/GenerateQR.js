@@ -50,25 +50,27 @@ render: function() {
         </View>
 
         <View style={styles.flexBox}>
-          
-          <Text>Nombre</Text>
-          <TextInput
-            style={styles.inputField}
-            onChangeText={(text) => this.setState({name: text})}
-            value={this.state.name}/>
-          <Text>Price</Text>
-          <TextInput
-            style={styles.inputField}
-            onChangeText={(text) => this.setState({price:text})}
-            keyboardType = 'numeric'
-            value={this.state.price}/>
-            <Button
-              style={styles.mainButton}
-              styleDisabled={{color: 'red'}}
-              onPress={this._onPressButton}>
-                Generate!
-            </Button>
 
+          <View style={styles.marginBox}>
+            <TextInput
+              style={styles.inputField}
+              placeholder = "Ingrese el concepto"
+              onChangeText={(text) => this.setState({name: text})}
+              value={this.state.name}/>
+
+            <TextInput
+              style={styles.inputField}
+              placeholder = "Ingrese un monto"
+              onChangeText={(text) => this.setState({price:text})}
+              keyboardType = 'numeric'
+              value={this.state.price}/>
+              <Button
+                style={styles.mainButton}
+                styleDisabled={{color: 'red'}}
+                onPress={this._onPressButton}>
+                  Generate!
+              </Button>
+         </View>
         </View>
       </View>
     );
@@ -77,7 +79,7 @@ render: function() {
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f4f4f4',
     flex: 1,
   },
   mainButton:{
@@ -108,12 +110,18 @@ var styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-
+  marginBox:{
+    width: 300,
+    marginLeft: 37,
+    marginTop: 30,
+  },
   inputField:{
-    backgroundColor: '#ffffff',
+    borderColor: '#5eb6ff',
+    borderWidth: 1,
     height: 50,
     padding: 10,
     marginTop: 10,
+    marginBottom: 20,
     flexDirection: 'row',
     alignItems: 'center',
     width: 300,

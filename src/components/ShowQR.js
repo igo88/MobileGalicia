@@ -8,10 +8,11 @@ var io = require("../../node_modules/socket.io/node_modules/socket.io-client/soc
 var UserActions = require('../actions/UserActions');
 
 var {
+  Alert,
   Text,
   View,
-  StyleSheet,
-  Alert
+  Image,
+  StyleSheet
   } = React;
 
 var ShowQR = React.createClass({
@@ -31,22 +32,35 @@ componentDidMount:function(){
 },
 render: function() {
     return (
+
       <View style={styles.layout}>
-      <QRCode
-            value={this.props.text + '|' + this.props.price}
-          size={200}
-          bgColor='black'
-          fgColor='white'/>
+        <View style={styles.flexBox}>
+          <Image style={styles.logo} source={require('./img/GaliciaPay_logo.png')}/>
+        </View>
+        <QRCode
+          value={this.props.text + '|' + this.props.price}
+        size={200}
+        bgColor='#008cff'
+        fgColor='white'/>
       </View>
+      
     );
   }
 });
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ff0000',
+    backgroundColor: '#008cff',
+    paddingTop: 10,
     flex: 1,
   },
+  flexBox:{
+    flex: 1,
+    alignItems: 'center',
+  },
+
+  logo:{
+    width: 300,  },
 });
 
 module.exports = ShowQR;
