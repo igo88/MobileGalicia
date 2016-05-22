@@ -62,9 +62,9 @@ _renderVentasHoy:function(){
 
 _renderHistorial:function(){
   if(this.state.transactions.length > 0){
-    return(<Image source={require('./img/inicio-vendedor-listado.png')} style={[{marginTop: 15}]}/>);
+    return(<Image source={require('./img/inicio-vendedor-listado.png')} />);
   }else{
-    return(  <Image source={require('./img/inicio_1stlogin-vendedor_tutorial.png')}/>);
+    return(  <Image source={require('./img/inicio_1stlogin-vendedor_tutorial.png')} style={[{marginTop: 15}]}/>);
   }
 },
 

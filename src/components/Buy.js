@@ -60,7 +60,7 @@ _onPressButtonBalance:function(){
 
 _renderHistorial:function(){
   if(this.state.transactions.length > 0){
-    return(<Image source={require('./img/inicio-comprador-listado.png')} style={[{marginTop: 15}]}/>);
+    return(<Image source={require('./img/inicio-comprador-listado.png')}/>);
   }else{
     return(<Image source={require('./img/inicio_1stlogin-user_tutorial.png')}/>);
   }
@@ -72,8 +72,6 @@ render: function() {
 
         <Image source={require('./img/banner_inicio-user.png')}/>
 
-        {this._renderHistorial()}
-
         <View style={styles.searchBox}>
           <View style={styles.flexBox}>
             <TextInput style={styles.searchInput} placeholder={'Buscar Comercios'}/>
@@ -83,6 +81,7 @@ render: function() {
           </View>
         </View>
 
+        {this._renderHistorial()}
 
 
 
