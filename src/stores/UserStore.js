@@ -6,7 +6,7 @@ var UserConstants = require('../constants/UserConstants');
 
 var CHANGE_EVENT = 'change';
 var _accounts = {};
-var _purchases = {};
+var _purchases = [{title:'Almacen', price: 500.00}, {title: 'Restaurant', price: 300.00}];
 var _sales = {};
 var _profile = {};
 
