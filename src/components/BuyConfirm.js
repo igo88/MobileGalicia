@@ -2,11 +2,11 @@ var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var AppStore = require('../stores/AppStore');
 var NavigationActions = require('../actions/NavigationActions');
+
 var Button = require('react-native-button');
 
 window.navigator.userAgent = "react-native";
 var io = require("../../node_modules/socket.io/node_modules/socket.io-client/socket.io");
-
 
 var {
   Alert,
