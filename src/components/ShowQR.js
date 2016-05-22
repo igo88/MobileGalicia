@@ -86,7 +86,7 @@ var styles = StyleSheet.create({
       alignItems: 'center',
       width: deviceWidth,
       justifyContent: 'flex-start',
-      marginBottom: 80,
+      marginBottom: 90,
     },
     backBtn:{
       marginLeft: 20,

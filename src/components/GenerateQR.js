@@ -68,7 +68,7 @@ render: function() {
                 style={styles.mainButton}
                 styleDisabled={{color: 'red'}}
                 onPress={this._onPressButton}>
-                  Generate!
+                  Generar QR
               </Button>
          </View>
         </View>
