@@ -33,7 +33,7 @@ getInitialState: function(){
 },
 
 _onPressButton: function(){
-  _socket = io('http://172.17.69.83:3000',{jsonp: false, transports: ['websocket']});
+  _socket = io('http://172.17.69.42:3000',{jsonp: false, transports: ['websocket']});
   _socket.emit('confirm', { title: this.state.name, price: this.state.price });
   Alert.alert(
   'Felicitaciones',
