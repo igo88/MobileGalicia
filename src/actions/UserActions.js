@@ -1,10 +1,11 @@
 var Dispatcher = require('../dispatcher/Dispatcher');
 var AppConstants = require('../constants/AppConstants');
+var UserConstants = require('../constants/UserConstants');
 
 var UserActions = {
   addTransaction: function(item) {
     Dispatcher.handleViewAction({
-      actionType: AppConstants.ADD_TRANSACTION,
+      actionType: UserConstants.ADD_TRANSACTION,
       payload: item
     });
   },

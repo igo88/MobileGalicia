@@ -2,6 +2,7 @@ var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var AppStore = require('../stores/AppStore');
 var NavigationActions = require('../actions/NavigationActions');
+var UserActions = require('../actions/UserActions');
 
 var Button = require('react-native-button');
 
@@ -35,11 +36,12 @@ getInitialState: function(){
 _onPressButton: function(){
   _socket = io('http://172.17.69.42:3000',{jsonp: false, transports: ['websocket']});
   _socket.emit('confirm', { title: this.state.name, price: this.state.price });
+  UserActions.addTransaction({title: this.state.name, price: this.state.price});
   Alert.alert(
   'Felicitaciones',
   'Tu pago fue correcto',
   [
-    {text: 'OK', onPress: () => console.log('OK Pressed')}
+    {text: 'OK', onPress: () => NavigationActions.navigate({route: RouteConstants.HOME, payload:'buyer'})}
   ]
 );
 },
