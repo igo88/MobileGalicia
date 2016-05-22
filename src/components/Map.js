@@ -14,7 +14,7 @@ var Map = React.createClass({
   getInitialState: function() {
     return  {
         mapRegion:{latitude: -34.605616, longitude: -58.372447,
-                latitudeDelta: 0.05, longitudeDelta: 0.05},
+                latitudeDelta: 0.005, longitudeDelta: 0.005},
         annotations: _.map(Places)
     }
   },
