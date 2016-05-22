@@ -11,14 +11,17 @@ var io = require("../../node_modules/socket.io/node_modules/socket.io-client/soc
 var {
   Alert,
   Text,
+  Image,
   View,
   StyleSheet,
   TouchableOpacity,
   SliderIOS,
+  Dimensions,
   } = React;
 
 var _socket;
 var coeficiente = 0.3;
+var deviceWidth = Dimensions.get('window').width;
 var BuyConfirm = React.createClass({
 getInitialState: function(){
   return {name: "",
@@ -49,6 +52,12 @@ componentDidMount: function(){
   });
 },
 
+_onPressButtonBack:function()
+{
+    NavigationActions.back();
+},
+
+
 _updateValues: function(value){
   var calculo = value * coeficiente;
   var precioFinal = this.state.price - calculo;
@@ -61,19 +70,30 @@ _updateValues: function(value){
 render: function() {
     return (
       <View style={styles.layout}>
-        <Text>Confirmas la compra de: {this.state.name}</Text>
-        <SliderIOS step={50} minimumValue={0} maximumValue={this.state.userPoints}
-        onValueChange={(value) => this._updateValues(value)} />
-        <Text>Precio: {this.state.price}</Text>
-        <Text>Puntos: {this.state.userPointsSelected} / {this.state.userPoints}</Text>
-        <Text>Precio Final: {this.state.finalPrice}</Text>
-        <Text>Ahorro: {this.state.discount}</Text>
-        <Button
-          style={{fontSize: 20, color: 'green'}}
-          styleDisabled={{color: 'red'}}
-          onPress={this._onPressButton}>
-            Confirmar Pago!
-        </Button>
+
+        <View style={styles.headerBack}>
+          <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonBack}>
+            <Text style={styles.backBtn}> {"‹"} Cancelar</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.headerTitle}>Pagar compra</Text>
+        </View>
+
+
+        <View style={styles.flexBox}>
+          <Image style={styles.ticket} source={require('./img/ticket.png')}/>
+          <Text style={styles.usePoints}>USAR MIS PUNTOS QUIERO!</Text>
+          <SliderIOS step={50} minimumValue={0} style={styles.slider} maximumValue={this.state.userPoints}
+            onValueChange={(value) => this._updateValues(value)} />
+          <Text style={styles.pointsBlue}>{this.state.userPoints}pts = ${this.state.userPointsSelected} </Text>
+          <Text style={styles.points}>Cuenta = ${this.state.finalPrice}</Text>
+          <Text style={styles.points}>Ahorro = ${this.state.discount}</Text>
+          <Button
+            style={styles.mainButton}
+            styleDisabled={{color: 'red'}}
+            onPress={this._onPressButton}>PAGAR ${this.state.finalPrice}
+          </Button>
+        </View>
       </View>
     );
   }
@@ -81,9 +101,61 @@ render: function() {
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ff0000',
+    backgroundColor: '#ffffff',
     flex: 1,
   },
+  flexBox:{
+    flex: 1,
+    alignItems: 'center',
+  },
+  ticket:{
+    marginTop: 30,
+  },
+  usePoints:{
+    fontSize: 16 ,
+    fontFamily: 'Helvetica Neue',
+    color: '#5eb6ff'
+  },
+  pointsBlue:{
+    fontSize: 30,
+    fontFamily: 'Helvetica Neue',
+    color: '#5eb6ff'
+  },
+  points:{
+    fontSize: 30,
+    fontFamily: 'Helvetica Neue',
+    color: '#515151'
+  },
+  headerTitle:{
+    fontWeight: 'bold',
+  },
+  mainButton:{
+    marginTop: 30,
+    padding: 15,
+    width: 300,
+    color: '#ffffff',
+    fontFamily: 'Helvetica Neue',
+    alignItems: 'center',
+    backgroundColor: '#5eb6ff'
+
+  },
+  slider: {
+    height: 50,
+    margin: 10,
+    width: 280
+  },
+  headerBack:{
+    backgroundColor: '#ffffff',
+    height: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: deviceWidth,
+    justifyContent: 'flex-start',
+  },
+  backBtn:{
+    marginLeft: 20,
+    marginRight: 55,
+  }
 });
 
 module.exports = BuyConfirm;
