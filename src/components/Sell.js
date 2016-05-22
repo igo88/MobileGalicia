@@ -54,14 +54,21 @@ _onPressButtonHistory:function()
 render: function() {
     return (
       <View style={styles.layout}>
-        <Text>Pay</Text>
-        <Button
-          style={{fontSize: 20, color: 'green'}}
-          styleDisabled={{color: 'red'}}
-          onPress={this._onPressButton}>
-            Generate!
-        </Button>
-        <TransactionList transactions={this.state.transactions} mode={'seller'} />
+        <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButton}>
+          <Image source={require('./img/bloque_solicitar-pago.png')}/>
+        </TouchableOpacity>
+        <Image source={require('./img/bloque_ventas-hoy.png')}/>
+        <Image source={require('./img/inicio_1stlogin-vendedor_tutorial.png')} style={[{marginTop: 15}]}/>
+        <View style={styles.footer}>
+          <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonHistory}>
+            <Image source={require('./img/icon_historial-texto.png')}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonProfile}>
+            <Image source={require('./img/icon_perfil-texto.png')}/>
+          </TouchableOpacity>
+        </View>
+      /*<TransactionList transactions={this.state.transactions} mode={'seller'} />*/
+
       </View>
     );
   }
@@ -69,8 +76,57 @@ render: function() {
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ff0000',
+    backgroundColor: '#efefef',
     flex: 1,
+  },
+  searchInput:{
+    backgroundColor: '#ffffff',
+    height: 50,
+    padding: 10,
+    marginTop: 15,
+    marginLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 260,
+    justifyContent: 'space-around',
+    borderRadius: 5,
+  },
+  searchBtn:{
+    marginRight: 10,
+  },
+  searchBox:{
+    backgroundColor: '#008cff',
+    height: 80,
+    margin: 10,
+    width: deviceWidth - 20,
+    borderRadius: 5,
+  },
+  footer:{
+    backgroundColor: '#ad2931',
+    position: 'absolute',
+    flex: 1,
+    bottom: 0,
+    height: 55,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: deviceWidth,
+    justifyContent: 'space-around',
+    shadowOffset: {width: 1, height: -1},
+    shadowColor: '#000000',
+    shadowOpacity: .6
+
+  },
+  flexBox:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  footerBtn:{
+    width: 50,
+  },
+  footerBtnScan:{
+    marginBottom: 2
   },
 });
 
