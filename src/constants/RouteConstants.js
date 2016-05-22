@@ -11,4 +11,6 @@ module.exports = keyMirror({
   SELL:null,
   SELL_GENERATE:null,
   SELL_SHOW_QR:null,
+  MAP:null,
+  STORE_DETAIL:null
 });

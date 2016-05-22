@@ -20,7 +20,7 @@ var MobileGalicia = React.createClass({
   render: function() {
       return (
         <View style={styles.margin}>
-          <AppNavigator initialRoute={RouteConstants.SIGNUP}></AppNavigator>
+          <AppNavigator initialRoute={RouteConstants.MAP}></AppNavigator>
         </View>
       );
     }

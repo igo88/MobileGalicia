@@ -13,6 +13,8 @@ var ShowQR = require('./ShowQR');
 var GenerateQR = require('./GenerateQR');
 var Signup = require('./Signup');
 var Signup2 = require('./Signup2');
+var Map = require('./Map');
+var StoreDetail = require('./StoreDetail')
 
 var {
   Navigator,
@@ -143,6 +145,12 @@ var renderComponent = function(route, navigator) {
     break;
     case RouteConstants.SELL_SHOW_QR:
       return (<ShowQR name= {route.payload.name} price = {route.payload.price}/>);
+    break;
+    case RouteConstants.MAP:
+      return (<Map/>);
+    break;
+    case RouteConstants.STORE_DETAIL:
+      return (<StoreDetail store={route.payload}/>);
     break;
     default:
       return (<Home />);
