@@ -57,7 +57,7 @@ render: function() {
           <QRCode
             value={this.props.text + '|' + this.props.price}
           size={200}
-          bgColor='#ff6600'
+          bgColor='#ffffff'
           fgColor='black'/>
         </View>
       </View>
@@ -68,7 +68,6 @@ render: function() {
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ff6600',
     paddingTop: 10,
     flex: 1,
   },
@@ -80,12 +79,13 @@ var styles = StyleSheet.create({
   logo:{
     width: 300,  },
     headerBack:{
-      backgroundColor: '#ff6600',
+      backgroundColor: '#ffffff',
       height: 30,
       flexDirection: 'row',
       alignItems: 'center',
       width: deviceWidth,
       justifyContent: 'flex-start',
+      marginBottom: 80,
     },
     backBtn:{
       marginLeft: 20,
