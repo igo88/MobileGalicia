@@ -8,11 +8,13 @@ var {
   Image,
   View,
   StyleSheet,
+  TextInput,
   TouchableOpacity,
   Dimensions,
   Modal,
   AlertIOS
-  } = React;
+} = React;
+
 
 var deviceWidth = Dimensions.get('window').width;
 var Buy = React.createClass({
@@ -45,8 +47,21 @@ _onPressButtonBalance:function(){
 render: function() {
     return (
       <View style={styles.layout}>
+
         <Image source={require('./img/banner_inicio-user.png')}/>
+
+        <View style={styles.searchBox}>
+          <View style={styles.flexBox}>
+            <TextInput style={styles.searchInput} placeholder={'Buscar Comercios'}/>
+            <TouchableOpacity style={styles.searchBtn} onPress={this._onPressButtonSearch}>
+              <Image source={require('./img/icon_inicio-barrabusqueda.png')}/>
+            </TouchableOpacity>
+          </View>
+        </View>
+
         <Image source={require('./img/inicio_1stlogin-user_tutorial.png')}/>
+
+
         <View style={styles.footer}>
           <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonSearch}>
             <Image source={require('./img/icon_buscar-texto.png')}/>
@@ -75,12 +90,34 @@ var styles = StyleSheet.create({
     backgroundColor: '#efefef',
     flex: 1,
   },
+  searchInput:{
+    backgroundColor: '#ffffff',
+    height: 50,
+    padding: 10,
+    marginTop: 15,
+    marginLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 260,
+    justifyContent: 'space-around',
+    borderRadius: 5,
+  },
+  searchBtn:{
+    marginRight: 10,
+  },
+  searchBox:{
+    backgroundColor: '#008cff',
+    height: 80,
+    margin: 10,
+    width: deviceWidth - 20,
+    borderRadius: 5,
+  },
   footer:{
     backgroundColor: '#002253',
     position: 'absolute',
     flex: 1,
     bottom: 0,
-    height: 60,
+    height: 80,
     flexDirection: 'row',
     alignItems: 'center',
     width: deviceWidth,
@@ -90,14 +127,17 @@ var styles = StyleSheet.create({
     shadowOpacity: .6
 
   },
+  flexBox:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
   footerBtn:{
     width: 50,
   },
   footerBtnScan:{
-    marginBottom: 30,
-    shadowOffset: {width: 0, height: -4},
-    shadowColor: '#000000',
-    shadowOpacity: .3,
+    marginBottom: 2
   },
 });
 
