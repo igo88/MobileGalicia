@@ -6,11 +6,19 @@ var Button = require('react-native-button');
 
 var {
   Text,
+  Image,
   View,
   StyleSheet,
-  TouchableHighlight
-  } = React;
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+  Modal,
+  AlertIOS
+} = React;
 
+
+
+var deviceWidth = Dimensions.get('window').width;
 var Sell = React.createClass({
 
 componentDidMount:function(){
@@ -19,6 +27,19 @@ componentDidMount:function(){
 _onPressButton: function(){
   NavigationActions.navigate({route: RouteConstants.SELL_GENERATE});
 },
+
+_onPressButtonProfile:function()
+{
+    NavigationActions.navigate({route: RouteConstants.PROFILE_SELLER});
+},
+_onPressButtonHistory:function()
+{
+    NavigationActions.navigate({route: RouteConstants.HISTORY_SELLER});
+},
+
+
+
+
 render: function() {
     return (
       <View style={styles.layout}>

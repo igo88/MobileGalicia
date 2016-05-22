@@ -3,17 +3,23 @@ var RouteConstants = require('../constants/RouteConstants');
 var AppStore = require('../stores/AppStore');
 var NavigationActions = require('../actions/NavigationActions');
 var Button = require('react-native-button');
+var ScrollableTabView = require('react-native-scrollable-tab-view');
 
 
 var {
   Text,
   View,
+  Image,
   StyleSheet,
   TouchableOpacity,
   ActivityIndicatorIOS,
   TextInput,
-  Timers
-  } = React;
+  Timers,
+  Dimensions,
+  ScrollView
+} = React;
+
+var deviceWidth = Dimensions.get('window').width;
 
 var Signup = React.createClass({
   getInitialState: function() {
@@ -24,52 +30,68 @@ var Signup = React.createClass({
       mode: 'buyer'
     }
   },
-stopLoading:function(){
-  this.setState({
-    animating:false,
-    text: 'SMS no encontrado...ingrese codigo de activacion.'
-  });
-},
-componentDidMount:function(){
-  setTimeout( this.stopLoading, 3000 );
-},
-_onPressButton:function(){
-  var mode;
-  switch(this.state.code){
-    case '1':
-    mode = 'buyer';
-    break;
-    case '2':
-    mode='seller';
-    break;
-  }
-  NavigationActions.navigate({route: RouteConstants.SIGNUP2, payload:mode});
-},
-render: function() {
+  stopLoading:function(){
+    this.setState({
+      animating:false,
+      text: 'SMS no encontrado...ingrese codigo de activacion.'
+    });
+  },
+  componentDidMount:function(){
+    setTimeout( this.stopLoading, 3000 );
+  },
+  _onPressButton:function(){
+    var mode;
+    switch(this.state.code){
+      case '1':
+      mode = 'buyer';
+      break;
+      case '2':
+      mode='seller';
+      break;
+    }
+    NavigationActions.navigate({route: RouteConstants.SIGNUP2, payload:mode});
+  },
+  render: function() {
     return (
-      <View style={styles.layout}>
-        <Text>Registro: </Text>
-        <View style={styles.row}>
-          <TextInput
-            keyboardType = 'numeric'
-            placeholder = "Ingrese su codigo de 12 pines"
-            style={{height: 40, width:300, borderColor: 'gray', borderWidth: 1}}
-            onChangeText={(text) => this.setState({code: text})}
-            value={this.state.code}/>
-            <ActivityIndicatorIOS
-              animating={this.state.animating}
-              style={[styles.centering, {height: 80}]}
-              size="large"
-            />
+      <ScrollView
+        ref={(scrollView) => { _scrollView = scrollView; }}
+        vertical={true}
+        style={styles.scroll}
+        automaticallyAdjustContentInsets={false}>
+        <View style={styles.layout}>
+
+
+          <View style={styles.flexBox}>
+            <Image style={styles.logo} source={require('./img/GaliciaPay_logo.png')}/>
           </View>
-          <Text>{this.state.text}</Text>
-          <Button
-            style={{fontSize: 20, color: 'green'}}
-            styleDisabled={{color: 'red'}}
-            onPress={this._onPressButton}>
-              Activar cuenta!
-          </Button>
+
+          <View style={styles.marginBox}>
+            <Image source={require('./img/activar_titulo.png')}/>
+            <TextInput
+              style={styles.inputField}
+              keyboardType = 'numeric'
+              placeholder = "Ingrese su codigo de 12 pines"
+              onChangeText={(text) => this.setState({code: text})}
+              value={this.state.code}
+              />
+            <Text style={[{color: '#ffffff', margin: 5}]}>{this.state.text}</Text>
+            <Button
+              style={styles.mainButton}
+              onPress={this._onPressButton}>Validar</Button>
+
+            <ScrollableTabView style={styles.tabBox}>
+              <View tabLabel='Red Banelco' style={styles.tabLabel}>
+                <Image source={require('./img/activar_tutorial_banelco.png')} />
+              </View>
+              <View tabLabel='Home Banking' style={styles.tabLabel}>
+                <Image source={require('./img/activar_tutorial_hb.png')}/>
+              </View>
+            </ScrollableTabView>
+            
+          </View>
         </View>
+      </ScrollView>
+
     );
   },
 
@@ -78,12 +100,54 @@ render: function() {
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#003265',
+    backgroundColor: '#008cff',
+    paddingTop: 40,
+    paddingBottom: 40,
     flex: 1,
   },
-  row:{
-    flexDirection:'row'
+  scroll:{
+    flex: 1,
+  },
+  flexBox:{
+    flex: 1,
+    alignItems: 'center',
+  },
+  logo:{
+    flex: 1,
+    width: 300,
+  },
+  marginBox:{
+    width: 300,
+    marginLeft: 37,
+    marginTop: 30,
+  },
+  inputField:{
+    backgroundColor: '#ffffff',
+    height: 50,
+    padding: 10,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 300,
+    justifyContent: 'space-around',
+  },
+  mainButton:{
+    borderWidth: 1,
+    borderColor: '#ffffff',
+    marginTop: 30,
+    padding: 15,
+    width: 300,
+    color: '#ffffff',
+    fontFamily: 'Helvetica Neue',
+    alignItems: 'center'
+  },
+  tabBox:{
+    marginTop: 60,
+  },
+  tabLabel:{
+    marginTop: 20
   }
+
 });
 
 module.exports = Signup;

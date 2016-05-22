@@ -7,6 +7,7 @@ var {
   Alert,
   Text,
   View,
+  Image,
   StyleSheet
   } = React;
 
@@ -22,6 +23,9 @@ _onSucess: function(result) {
 render: function() {
     return (
       <View style={styles.layout}>
+        <View style={styles.flexBox}>
+          <Image style={styles.logo} source={require('./img/GaliciaPay_logo.png')}/>
+        </View>
         <QRCodeScreen onSucess = {this._onSucess}></QRCodeScreen>
       </View>
     );
@@ -30,9 +34,17 @@ render: function() {
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ff0000',
+    backgroundColor: '#008cff',
+    paddingTop: 10,
     flex: 1,
   },
+  flexBox:{
+    flex: 1,
+    alignItems: 'center',
+  },
+
+  logo:{
+    width: 300,  },
 });
 
 module.exports = ReadQR;
