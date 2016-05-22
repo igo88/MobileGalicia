@@ -7,8 +7,10 @@ var {
   Text,
   View,
   StyleSheet,
-  TouchableOpacity
-  } = React;
+  TouchableOpacity,
+  Image,
+  ScrollView
+} = React;
 
 var HistoryBuyer = React.createClass({
   getInitialState: function() {
@@ -17,21 +19,33 @@ var HistoryBuyer = React.createClass({
     }
   },
 
-componentDidMount:function(){
+  componentDidMount:function(){
 
-},
-render: function() {
-  return(
-    <View>
-      <NavBar title={'Historial'} />
-    </View>
-  );
+  },
+  render: function() {
+    return(
+      <ScrollView
+        ref={(scrollView) => { _scrollView = scrollView; }}
+        vertical={true}
+        style={styles.scroll}
+        automaticallyAdjustContentInsets={false}>
+        <View style={styles.layout}>
+          <NavBar title={'Historial'} />
+          <Image source={require('./img/GaliciaPay-PerfilUsuarioComprador.png')}/>
+
+
+        </View>
+      </ScrollView>
+    );
   },
 });
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#003265',
+    backgroundColor: '#008cff',
+    flex: 1,
+  },
+  scroll:{
     flex: 1,
   },
 });

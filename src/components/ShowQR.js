@@ -22,14 +22,14 @@ var deviceWidth = Dimensions.get('window').width;
 var ShowQR = React.createClass({
 
 componentDidMount:function(){
-  _socket = io('http://172.17.69.42:3000',{jsonp: false, transports: ['websocket']});
+  _socket = io('http://172.17.69.43:3000',{jsonp: false, transports: ['websocket']});
   _socket.on('notify', function(data){
     UserActions.addTransaction({title: data.title, price: data.price});
     Alert.alert(
     'Felicitaciones',
     'Se acredito el pago.',
     [
-      {text: 'OK', onPress: () => console.log('OK Pressed')}
+      {text: 'OK', onPress: () => NavigationActions.navigate({route: RouteConstants.HOME, payload:'seller'})}
     ]
   );
   });
@@ -56,7 +56,7 @@ render: function() {
         <View style={styles.flexBox}>
           <QRCode
             value={this.props.text + '|' + this.props.price}
-          size={200}
+          size={300}
           bgColor='black'
           fgColor='white'/>
         </View>
