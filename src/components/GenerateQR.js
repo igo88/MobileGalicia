@@ -53,13 +53,14 @@ render: function() {
 
           <Text>Nombre</Text>
           <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            style={styles.inputField}
             onChangeText={(text) => this.setState({name: text})}
             value={this.state.name}/>
           <Text>Price</Text>
           <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            style={styles.inputField}
             onChangeText={(text) => this.setState({price:text})}
+            keyboardType = 'numeric'
             value={this.state.price}/>
             <Button
               style={styles.mainButton}
@@ -106,6 +107,17 @@ var styles = StyleSheet.create({
   flexBox:{
     flex: 1,
     alignItems: 'center',
+  },
+
+  inputField:{
+    backgroundColor: '#ffffff',
+    height: 50,
+    padding: 10,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 300,
+    justifyContent: 'space-around',
   },
 });
 

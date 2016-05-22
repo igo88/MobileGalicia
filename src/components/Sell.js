@@ -51,14 +51,35 @@ _onPressButtonHistory:function()
     NavigationActions.navigate({route: RouteConstants.HISTORY_SELLER});
 },
 
+_renderVentasHoy:function(){
+  if(this.state.transactions.length > 0){
+    return(<Image source={require('./img/bloque_ventas-hoy_trx_OK')}/>);
+
+  }else {
+    return(<Image source={require('./img/bloque_ventas-hoy.png')}/>);
+  }
+},
+
+_renderHistorial:function(){
+  if(this.state.transactions.length > 0){
+    return(<Image source={require('./img/inicio-vendedor-listado.png')} style={[{marginTop: 15}]}/>);
+  }else{
+    return(  <Image source={require('./img/inicio_1stlogin-vendedor_tutorial.png')} style={[{marginTop: 15}]}/>);
+  }
+},
+
 render: function() {
+  var trx = this.state.transactions.length > 0;
     return (
       <View style={styles.layout}>
         <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButton}>
           <Image source={require('./img/bloque_solicitar-pago.png')}/>
         </TouchableOpacity>
-        <Image source={require('./img/bloque_ventas-hoy.png')}/>
-        <Image source={require('./img/inicio_1stlogin-vendedor_tutorial.png')} style={[{marginTop: 15}]}/>
+
+        {_renderVentasHoy()}
+        {_renderHistorialHoy()}
+
+
         <View style={styles.footer}>
           <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonHistory}>
             <Image source={require('./img/icon_historial-texto.png')}/>
@@ -67,7 +88,6 @@ render: function() {
             <Image source={require('./img/icon_perfil-texto.png')}/>
           </TouchableOpacity>
         </View>
-      /*<TransactionList transactions={this.state.transactions} mode={'seller'} />*/
 
       </View>
     );

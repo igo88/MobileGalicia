@@ -57,6 +57,15 @@ _onPressButtonBalance:function(){
  'Salgo actual: $3500.00'
 );
 },
+
+_renderHistorial:function(){
+  if(this.state.transactions.length > 0){
+    return(<Image source={require('./img/inicio-comprador-listado.png')} style={[{marginTop: 15}]}/>);
+  }else{
+    return(<Image source={require('./img/inicio_1stlogin-user_tutorial.png')}/>);
+  }
+},
+
 render: function() {
     return (
       <View style={styles.layout}>
@@ -72,7 +81,7 @@ render: function() {
           </View>
         </View>
 
-        <Image source={require('./img/inicio_1stlogin-user_tutorial.png')}/>
+
 
 
         <View style={styles.footer}>
