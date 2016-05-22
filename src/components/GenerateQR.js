@@ -89,7 +89,7 @@ var styles = StyleSheet.create({
     color: '#ffffff',
     fontFamily: 'Helvetica Neue',
     alignItems: 'center',
-    backgroundColor: '#5eb6ff'
+    backgroundColor: '#ff6600'
   },
   headerBack:{
     backgroundColor: '#ffffff',
@@ -112,11 +112,11 @@ var styles = StyleSheet.create({
   },
   marginBox:{
     width: 300,
-    marginLeft: 37,
+    marginLeft: 25,
     marginTop: 30,
   },
   inputField:{
-    borderColor: '#5eb6ff',
+    borderColor: '#ff6600',
     borderWidth: 1,
     height: 50,
     padding: 10,

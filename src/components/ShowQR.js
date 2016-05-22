@@ -12,8 +12,11 @@ var {
   Text,
   View,
   Image,
-  StyleSheet
+  StyleSheet,
+  Dimensions
   } = React;
+
+var deviceWidth = Dimensions.get('window').width;
 
 var ShowQR = React.createClass({
 
@@ -30,27 +33,42 @@ componentDidMount:function(){
   );
   });
 },
+
+_onPressButtonBack:function()
+{
+    NavigationActions.back();
+},
+
 render: function() {
     return (
 
       <View style={styles.layout}>
-        <View style={styles.flexBox}>
-          <Image style={styles.logo} source={require('./img/GaliciaPay_logo.png')}/>
+
+        <View style={styles.headerBack}>
+          <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonBack}>
+            <Text style={styles.backBtn}> {"‹"} Cancelar</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.headerTitle}>QR de Compra</Text>
         </View>
-        <QRCode
-          value={this.props.text + '|' + this.props.price}
-        size={200}
-        bgColor='#008cff'
-        fgColor='white'/>
+
+        <View style={styles.flexBox}>
+          <Image style={styles.ticket} source={require('./img/ticket.png')}/>
+          <QRCode
+            value={this.props.text + '|' + this.props.price}
+          size={200}
+          bgColor='#ff6600'
+          fgColor='white'/>
+        </View>
       </View>
-      
+
     );
   }
 });
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#008cff',
+    backgroundColor: '#ff6600',
     paddingTop: 10,
     flex: 1,
   },
@@ -61,6 +79,22 @@ var styles = StyleSheet.create({
 
   logo:{
     width: 300,  },
+    headerBack:{
+      backgroundColor: '#ffffff',
+      height: 30,
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: deviceWidth,
+      justifyContent: 'flex-start',
+    },
+    backBtn:{
+      marginLeft: 20,
+      marginRight: 55,
+    },
+
+    headerTitle:{
+      fontWeight: 'bold',
+    },
 });
 
 module.exports = ShowQR;
