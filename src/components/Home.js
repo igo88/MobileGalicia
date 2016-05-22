@@ -25,10 +25,10 @@ render: function() {
       <View style={styles.layout}>
         <Text>HOME</Text>
         <TouchableOpacity onPress={this._onPressButtonBuy}>
-          <Text>Comprar</Text>
+          <Text>Comprar Ale</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={this._onPressButtonPay}>
-          <Text>Vender</Text>
+          <Text>Vender Ale</Text>
         </TouchableOpacity>
       </View>
     );
