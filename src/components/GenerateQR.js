@@ -50,7 +50,7 @@ render: function() {
         </View>
 
         <View style={styles.flexBox}>
-
+          
           <Text>Nombre</Text>
           <TextInput
             style={styles.inputField}
