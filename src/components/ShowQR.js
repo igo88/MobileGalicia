@@ -70,6 +70,7 @@ var styles = StyleSheet.create({
   layout:{
     paddingTop: 10,
     flex: 1,
+    backgroundColor: '#ffffff'
   },
   flexBox:{
     flex: 1,
