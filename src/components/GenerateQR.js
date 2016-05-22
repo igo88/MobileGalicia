@@ -6,13 +6,18 @@ var Button = require('react-native-button');
 
 var {
   Text,
+  Alert,
+  Text,
+  Image,
   View,
   StyleSheet,
-  Image,
-  TouchableHighlight,
+  TouchableOpacity,
+  SliderIOS,
+  Dimensions,
   TextInput
   } = React;
 
+var deviceWidth = Dimensions.get('window').width;
 var GenerateQR = React.createClass({
 getInitialState:function(){
   return {
@@ -23,28 +28,47 @@ getInitialState:function(){
 componentDidMount:function(){
 
 },
+
+_onPressButtonBack:function()
+{
+    NavigationActions.back();
+},
+
 _onPressButton:function(){
   NavigationActions.navigate({route: RouteConstants.SELL_SHOW_QR, payload:{name:this.state.name, price: this.state.price}});
 },
 render: function() {
     return (
       <View style={styles.layout}>
-        <Text>Nombre</Text>
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => this.setState({name: text})}
-          value={this.state.name}/>
-        <Text>Price</Text>
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => this.setState({price:text})}
-          value={this.state.price}/>
-          <Button
-            style={{fontSize: 20, color: 'green'}}
-            styleDisabled={{color: 'red'}}
-            onPress={this._onPressButton}>
-              Generate!
-          </Button>
+
+        <View style={styles.headerBack}>
+          <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonBack}>
+            <Text style={styles.backBtn}> {"‹"} Cancelar</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.headerTitle}>Solicitar Pago </Text>
+        </View>
+
+        <View style={styles.flexBox}>
+
+          <Text>Nombre</Text>
+          <TextInput
+            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            onChangeText={(text) => this.setState({name: text})}
+            value={this.state.name}/>
+          <Text>Price</Text>
+          <TextInput
+            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            onChangeText={(text) => this.setState({price:text})}
+            value={this.state.price}/>
+            <Button
+              style={styles.mainButton}
+              styleDisabled={{color: 'red'}}
+              onPress={this._onPressButton}>
+                Generate!
+            </Button>
+
+        </View>
       </View>
     );
   }
@@ -52,8 +76,36 @@ render: function() {
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ff0000',
+    backgroundColor: '#ffffff',
     flex: 1,
+  },
+  mainButton:{
+    marginTop: 30,
+    padding: 15,
+    width: 300,
+    color: '#ffffff',
+    fontFamily: 'Helvetica Neue',
+    alignItems: 'center',
+    backgroundColor: '#5eb6ff'
+  },
+  headerBack:{
+    backgroundColor: '#ffffff',
+    height: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: deviceWidth,
+    justifyContent: 'flex-start',
+  },
+  backBtn:{
+    marginLeft: 10,
+    marginRight: 55,
+  },
+  headerTitle:{
+    fontWeight: 'bold',
+  },
+  flexBox:{
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
