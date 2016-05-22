@@ -3,6 +3,8 @@ var RouteConstants = require('../constants/RouteConstants');
 var AppStore = require('../stores/AppStore');
 var NavigationActions = require('../actions/NavigationActions');
 var Button = require('react-native-button');
+var TransactionList = require('./TransactionList');
+var UserStore = require('../stores/UserStore');
 
 var {
   Text,
@@ -20,9 +22,21 @@ var {
 
 var deviceWidth = Dimensions.get('window').width;
 var Sell = React.createClass({
-
+getInitialState: function(){
+  return({
+      transactions: UserStore.getPurchases()
+  });
+},
 componentDidMount:function(){
-
+  UserStore.addChangeListener(this._onUserStoreChange);
+},
+componenteWillUnmount:function(){
+  UserStore.removeChangeListener(this._onUserStoreChange);
+},
+_onUserStoreChange:function(){
+  this.setState({
+    transactions: UserStore.getPurchases()
+  });
 },
 _onPressButton: function(){
   NavigationActions.navigate({route: RouteConstants.SELL_GENERATE});
@@ -36,9 +50,6 @@ _onPressButtonHistory:function()
 {
     NavigationActions.navigate({route: RouteConstants.HISTORY_SELLER});
 },
-
-
-
 
 render: function() {
     return (
@@ -56,6 +67,8 @@ render: function() {
             <Image source={require('./img/icon_perfil-texto.png')}/>
           </TouchableOpacity>
         </View>
+      /*<TransactionList transactions={this.state.transactions} mode={'seller'} />*/
+
       </View>
     );
   }

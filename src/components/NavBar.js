@@ -1,12 +1,6 @@
 var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var NavigationActions = require('../actions/NavigationActions');
-var NavBar = require('./NavBar');
-
-var Button = require('react-native-button');
-
-window.navigator.userAgent = "react-native";
-var io = require("../../node_modules/socket.io/node_modules/socket.io-client/socket.io");
 
 var {
   Alert,
@@ -21,27 +15,21 @@ var {
 
 var deviceWidth = Dimensions.get('window').width;
 
+var NavBar = React.createClass({
 
-
-
-var ProfileBuyer = React.createClass({
-
-  _onPressButtonBack:function(){
+_onPressButtonBack:function(){
       NavigationActions.back();
-  },
-
-  getInitialState: function() {
-    return  {
-
-    }
-  },
-
-componentDidMount:function(){
-
 },
 render: function() {
     return(
-      <NavBar title={'Perfil'} />
+      <View style={styles.layout}>
+        <View style={styles.headerBack}>
+          <TouchableOpacity style={styles.footerBtn} onPress={this._onPressButtonBack}>
+            <Text style={styles.backBtn}> {"‹"} Cancelar</Text>
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>{this.props.title}</Text>
+        </View>
+      </View>
     );
   },
 });
@@ -68,4 +56,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = ProfileBuyer;
+module.exports = NavBar;

@@ -2,6 +2,7 @@ var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var Places =require('../data/places.json');
 var _ = require('underscore');
+var NavBar = require('./NavBar');
 var {
   Text,
   View,
@@ -24,18 +25,21 @@ componentDidMount:function(){
 },
 render: function() {
     return(
-      <MapView
-        style={styles.map}
-        region={this.state.mapRegion}
-        annotations={this.state.annotations}
-      />
+      <View>
+        <NavBar title={'Buscar'}></NavBar>
+        <MapView
+          style={styles.map}
+          region={this.state.mapRegion}
+          annotations={this.state.annotations}
+        />
+      </View>
     );
   },
 });
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#003265',
+    backgroundColor: '#ffffff',
     flex: 1,
   },
   map: {
