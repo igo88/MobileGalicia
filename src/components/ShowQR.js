@@ -57,8 +57,8 @@ render: function() {
           <QRCode
             value={this.props.text + '|' + this.props.price}
           size={200}
-          bgColor='#ffffff'
-          fgColor='black'/>
+          bgColor='black'
+          fgColor='white'/>
         </View>
       </View>
 
