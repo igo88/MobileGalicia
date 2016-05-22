@@ -53,7 +53,7 @@ _onPressButtonHistory:function()
 
 _renderVentasHoy:function(){
   if(this.state.transactions.length > 0){
-    return(<Image source={require('./img/bloque_ventas-hoy_trx_OK')}/>);
+    return(<Image source={require('./img/bloque_ventas-hoy_trx_OK.png')}/>);
 
   }else {
     return(<Image source={require('./img/bloque_ventas-hoy.png')}/>);
@@ -64,7 +64,7 @@ _renderHistorial:function(){
   if(this.state.transactions.length > 0){
     return(<Image source={require('./img/inicio-vendedor-listado.png')} style={[{marginTop: 15}]}/>);
   }else{
-    return(  <Image source={require('./img/inicio_1stlogin-vendedor_tutorial.png')} style={[{marginTop: 15}]}/>);
+    return(  <Image source={require('./img/inicio_1stlogin-vendedor_tutorial.png')}/>);
   }
 },
 
@@ -76,8 +76,8 @@ render: function() {
           <Image source={require('./img/bloque_solicitar-pago.png')}/>
         </TouchableOpacity>
 
-        {_renderVentasHoy()}
-        {_renderHistorialHoy()}
+        {this._renderVentasHoy()}
+        {this._renderHistorial()}
 
 
         <View style={styles.footer}>
