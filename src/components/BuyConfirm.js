@@ -21,7 +21,7 @@ var {
   } = React;
 
 var _socket;
-var coeficiente = 0.3;
+var coeficiente = 0.04;
 var deviceWidth = Dimensions.get('window').width;
 var BuyConfirm = React.createClass({
 getInitialState: function(){
@@ -63,7 +63,7 @@ _onPressButtonBack:function()
 _updateValues: function(value){
   var calculo = value * coeficiente;
   var precioFinal = this.state.price - calculo;
-  var descuentoFinal = precioFinal * 0.05;
+  var descuentoFinal = (precioFinal * 0.05).toFixed(2);
   this.setState({userPointsSelected: value,
                 finalPrice: precioFinal,
                 discount: descuentoFinal
@@ -87,8 +87,8 @@ render: function() {
           <Text style={styles.usePoints}>USAR MIS PUNTOS QUIERO!</Text>
           <SliderIOS step={50} minimumValue={0} style={styles.slider} maximumValue={this.state.userPoints}
             onValueChange={(value) => this._updateValues(value)} />
-          <Text style={styles.pointsBlue}>{this.state.userPoints}pts = ${this.state.userPointsSelected} </Text>
-          <Text style={styles.points}>Cuenta = ${this.state.finalPrice}</Text>
+          <Text style={styles.pointsBlue}>{this.state.userPointsSelected + '/' +this.state.userPoints}pts = ${this.state.userPointsSelected * coeficiente} </Text>
+          <Text style={styles.points}>Importe a debitar= ${this.state.finalPrice}</Text>
           <Text style={styles.points}>Ahorro = ${this.state.discount}</Text>
           <Button
             style={styles.mainButton}
