@@ -90,7 +90,6 @@ render: function() {
           <Text style={styles.pointsBlue}>{this.state.userPointsSelected + '/' +this.state.userPoints}pts = ${this.state.userPointsSelected * coeficiente} </Text>
           <Text style={styles.points}>Importe a debitar= ${this.state.finalPrice}</Text>
           <Text style={styles.points}>Ahorro = ${this.state.discount}</Text>
-          
           <Button
             style={styles.mainButton}
             styleDisabled={{color: 'red'}}
