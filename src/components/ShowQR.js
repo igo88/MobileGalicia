@@ -54,12 +54,11 @@ render: function() {
         </View>
 
         <View style={styles.flexBox}>
-          <Image style={styles.ticket} source={require('./img/ticket.png')}/>
           <QRCode
             value={this.props.text + '|' + this.props.price}
           size={200}
           bgColor='#ff6600'
-          fgColor='white'/>
+          fgColor='black'/>
         </View>
       </View>
 
@@ -81,7 +80,7 @@ var styles = StyleSheet.create({
   logo:{
     width: 300,  },
     headerBack:{
-      backgroundColor: '#ffffff',
+      backgroundColor: '#ff6600',
       height: 30,
       flexDirection: 'row',
       alignItems: 'center',
