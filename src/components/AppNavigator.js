@@ -133,6 +133,7 @@ var renderComponent = function(route, navigator) {
     break;
     case RouteConstants.BUY_CONFIRM:
       return (<BuyConfirm result={route.payload.result}/>);
+      //return (<BuyConfirm result="Iphone6|500.00"/>);
     break;
     case RouteConstants.SELL:
       return (<Sell/>);

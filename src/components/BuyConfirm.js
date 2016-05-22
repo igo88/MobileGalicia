@@ -13,15 +13,22 @@ var {
   Text,
   View,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  SliderIOS,
   } = React;
 
 var _socket;
-
+var coeficiente = 0.3;
 var BuyConfirm = React.createClass({
 getInitialState: function(){
-  return {name: "", price:""};
+  return {name: "",
+          price:0.0,
+          userPoints:1000,
+          userPointsSelected:0.0,
+          finalPrice:0.0,
+          discount:0.0};
 },
+
 _onPressButton: function(){
   _socket = io('http://172.17.69.83:3000',{jsonp: false, transports: ['websocket']});
   _socket.emit('confirm', { confirm: true });
@@ -33,15 +40,34 @@ _onPressButton: function(){
   ]
 );
 },
+
 componentDidMount: function(){
   var splitted = this.props.result.split('|');
-  this.state.name = splitted[0];
-  this.state.price = splitted[1];
+  this.setState({
+    name:splitted[0],
+    price:parseFloat(splitted[1]),
+  });
+},
+
+_updateValues: function(value){
+  var calculo = value * coeficiente;
+  var precioFinal = this.state.price - calculo;
+  var descuentoFinal = precioFinal * 0.05;
+  this.setState({userPointsSelected: value,
+                finalPrice: precioFinal,
+                discount: descuentoFinal
+                });
 },
 render: function() {
     return (
       <View style={styles.layout}>
-        <Text>Confirmas la compra de: {this.state.name} por {this.state.price}</Text>
+        <Text>Confirmas la compra de: {this.state.name}</Text>
+        <SliderIOS step={50} minimumValue={0} maximumValue={this.state.userPoints}
+        onValueChange={(value) => this._updateValues(value)} />
+        <Text>Precio: {this.state.price}</Text>
+        <Text>Puntos: {this.state.userPointsSelected} / {this.state.userPoints}</Text>
+        <Text>Precio Final: {this.state.finalPrice}</Text>
+        <Text>Ahorro: {this.state.discount}</Text>
         <Button
           style={{fontSize: 20, color: 'green'}}
           styleDisabled={{color: 'red'}}
