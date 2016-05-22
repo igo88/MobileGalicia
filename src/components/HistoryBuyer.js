@@ -1,6 +1,7 @@
 var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var NavigationActions = require('../actions/NavigationActions');
+var NavBar = require('./NavBar');
 
 var {
   Text,
@@ -20,7 +21,11 @@ componentDidMount:function(){
 
 },
 render: function() {
-    return(<Text>Historial Comprador</Text>);
+  return(
+    <View>
+      <NavBar title={'Historial'} />
+    </View>
+  );
   },
 });
 

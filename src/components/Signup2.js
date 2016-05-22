@@ -60,7 +60,7 @@ var Signup2 = React.createClass({
                 style={styles.pinInput}
                 onChangeText={(text) => {_pin2.focus(); this.setState({pin1: text});}}
                 value={this.state.pin1}
-                autoFocus={true}
+                autoFocus={false}
                 ref={(pinInput) => {
                   _pin1 = pinInput;
                 }}/>

@@ -2,6 +2,7 @@ var _ = require('underscore');
 var AppDispatcher = require('../dispatcher/Dispatcher');
 var assign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
+var UserConstants = require('../constants/UserConstants');
 
 var CHANGE_EVENT = 'change';
 var _accounts = {};
@@ -35,7 +36,10 @@ var UserStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
-
+    case UserConstants.ADD_TRANSACTION:
+    _purchases.push(action.payload);
+    UserStore.emitChange();
+    break;
   }
 });
 
