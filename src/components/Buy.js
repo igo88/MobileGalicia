@@ -72,8 +72,6 @@ render: function() {
 
         <Image source={require('./img/banner_inicio-user.png')}/>
 
-        {this._renderHistorial()}
-
         <View style={styles.searchBox}>
           <View style={styles.flexBox}>
             <TextInput style={styles.searchInput} placeholder={'Buscar Comercios'}/>
@@ -83,6 +81,7 @@ render: function() {
           </View>
         </View>
 
+        {this._renderHistorial()}
 
 
 
