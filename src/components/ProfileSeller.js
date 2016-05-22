@@ -1,13 +1,16 @@
 var React = require('react-native');
 var RouteConstants = require('../constants/RouteConstants');
 var NavigationActions = require('../actions/NavigationActions');
+var NavBar = require('./NavBar');
 
 var {
   Text,
   View,
   StyleSheet,
-  TouchableOpacity
-  } = React;
+  TouchableOpacity,
+  Image,
+  ScrollView
+} = React;
 
 var ProfileSeller = React.createClass({
   getInitialState: function() {
@@ -16,17 +19,31 @@ var ProfileSeller = React.createClass({
     }
   },
 
-componentDidMount:function(){
+  componentDidMount:function(){
 
-},
-render: function() {
-    return(<Text>Perfil Vendedor</Text>);
+  },
+  render: function() {
+    return(
+      <ScrollView
+        ref={(scrollView) => { _scrollView = scrollView; }}
+        vertical={true}
+        style={styles.scroll}
+        automaticallyAdjustContentInsets={false}>
+        <View style={styles.layout}>
+          <NavBar title={'Historial'} />
+          <Image source={require('./img/GaliciaPay-HistorialVendedor.png')}/>
+        </View>
+      </ScrollView>
+    );
   },
 });
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#003265',
+    backgroundColor: '#008cff',
+    flex: 1,
+  },
+  scroll:{
     flex: 1,
   },
 });

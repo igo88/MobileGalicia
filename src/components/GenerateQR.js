@@ -52,12 +52,14 @@ render: function() {
         <View style={styles.flexBox}>
 
           <View style={styles.marginBox}>
+            <Image source={require('./img/solicitar-pago_descripcion.png')}/>
             <TextInput
               style={styles.inputField}
               placeholder = "Ingrese el concepto"
               onChangeText={(text) => this.setState({name: text})}
               value={this.state.name}/>
 
+            <Image source={require('./img/solicitar-pago_monto.png')}/>
             <TextInput
               style={styles.inputField}
               placeholder = "Ingrese un monto"
@@ -68,7 +70,7 @@ render: function() {
                 style={styles.mainButton}
                 styleDisabled={{color: 'red'}}
                 onPress={this._onPressButton}>
-                  Generate!
+                  Generar QR
               </Button>
          </View>
         </View>

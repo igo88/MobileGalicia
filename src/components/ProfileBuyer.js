@@ -17,7 +17,8 @@ var {
   TouchableOpacity,
   SliderIOS,
   Dimensions,
-  } = React;
+  ScrollView
+} = React;
 
 var deviceWidth = Dimensions.get('window').width;
 
@@ -27,7 +28,7 @@ var deviceWidth = Dimensions.get('window').width;
 var ProfileBuyer = React.createClass({
 
   _onPressButtonBack:function(){
-      NavigationActions.back();
+    NavigationActions.back();
   },
 
   getInitialState: function() {
@@ -36,19 +37,33 @@ var ProfileBuyer = React.createClass({
     }
   },
 
-componentDidMount:function(){
+  componentDidMount:function(){
 
-},
-render: function() {
+  },
+  render: function() {
     return(
-      <NavBar title={'Perfil'} />
+      <ScrollView
+        ref={(scrollView) => { _scrollView = scrollView; }}
+        vertical={true}
+        style={styles.scroll}
+        automaticallyAdjustContentInsets={false}>
+        <View style={styles.layout}>
+          <NavBar title={'Perfil'} />
+          <Image source={require('./img/GaliciaPay-HistorialComprador.png')}/>
+
+
+        </View>
+      </ScrollView>
     );
   },
 });
 
 var styles = StyleSheet.create({
   layout:{
-    backgroundColor: '#ffffff',
+    backgroundColor: '#008cff',
+    flex: 1,
+  },
+  scroll:{
     flex: 1,
   },
   headerBack:{
