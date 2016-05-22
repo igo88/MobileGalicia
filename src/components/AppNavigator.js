@@ -13,6 +13,12 @@ var ShowQR = require('./ShowQR');
 var GenerateQR = require('./GenerateQR');
 var Signup = require('./Signup');
 var Signup2 = require('./Signup2');
+var Map = require('./Map');
+var StoreDetail = require('./StoreDetail')
+var HistoryBuyer = require('./HistoryBuyer');
+var HistorySeller = require('./HistorySeller');
+var ProfileBuyer = require('./ProfileBuyer');
+var ProfileSeller = require('./ProfileSeller');
 
 var {
   Navigator,
@@ -143,6 +149,24 @@ var renderComponent = function(route, navigator) {
     break;
     case RouteConstants.SELL_SHOW_QR:
       return (<ShowQR name= {route.payload.name} price = {route.payload.price}/>);
+    break;
+    case RouteConstants.MAP:
+      return (<Map/>);
+    break;
+    case RouteConstants.STORE_DETAIL:
+      return (<StoreDetail store={route.payload}/>);
+    break;
+    case RouteConstants.HISTORY_BUYER:
+      return (<HistoryBuyer/>);
+    break;
+    case RouteConstants.HISTORY_SELLER:
+      return (<HistorySeller/>);
+    break;
+    case RouteConstants.PROFILE_BUYER:
+      return (<ProfileBuyer/>);
+    break;
+    case RouteConstants.PROFILE_SELLER:
+      return (<ProfileSeller/>);
     break;
     default:
       return (<Home />);
